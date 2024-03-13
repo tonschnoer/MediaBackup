@@ -65,11 +65,5 @@ public class Main extends GenericServlet {
 	throws ServletException, IOException {
 		
 	}
-	
-	
-
-	
-
-	
-	
+		
 }
