@@ -16,16 +16,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class Config {
 
-	private static String config = "{ \"server\" : \"127.0.0.1\",\"port\" : \"12345\"}";
+	private static String config = "{ \"server\" : \"127.0.0.1\",\"port\" : \"12345\"}";  // spielt keine Rolle, wird beim Einlesen der json Datei überschrieben
 	
 	protected static final Logger logger = LogManager.getLogger();
 	
 	private static Map<String, String> configmap;
 	
-	
+	// ******************************************************************
+	// getter-Methode, um an die Config-Parameter in der Map "configmap" von außen ranzukommen
+	// ******************************************************************
 	public static String getConfigKey(String key) {
 		return configmap.getOrDefault(key, "n/a");
 	}
+	
+	
+	// *********************************************************************
+	// einlesen der Config Datei   E:\Daten\config.json
+	// *********************************************************************
 	
 	public static String readConfig() {
 		String result="";
@@ -53,6 +60,11 @@ public final class Config {
 		}
 		return result;
 	}
+	
+	
+	// ****************************************************************************
+	// parsen des Config Strings in eine configmap
+	// ****************************************************************************
 	
 	public static void parseConfig() 
 			  throws JsonParseException, JsonMappingException, IOException {

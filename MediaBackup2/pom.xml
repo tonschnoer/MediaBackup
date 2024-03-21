@@ -36,6 +36,8 @@
 			<scope>provided</scope>
 		</dependency>
 
+
+		<!-- jackson wird für das Einlesen und Parsen von json Dateien benötigt -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -83,13 +85,17 @@
 						</goals>
 						<configuration>
 							<artifactItems>
+								
+								
+								<!-- hier wird die fertige WAR Datei ins Verzeichnis vom Wildfly kopiert. Damit wird sie deployed. -->
 								<artifactItem>
 									<groupId>de.kmt.MediaBackup</groupId>
 									<artifactId>MediaBackup2</artifactId>
 									<version>0.0.2-SNAPSHOT</version>
 									<type>war</type>
 									<overWrite>true</overWrite>
-									<outputDirectory>C:\Users\tonsc\Downloads\wildfly-31.0.1.Final\wildfly-31.0.1.Final\standalone\deployments</outputDirectory>
+									<outputDirectory>
+										C:\Users\tonsc\Downloads\wildfly-31.0.1.Final\wildfly-31.0.1.Final\standalone\deployments</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -98,5 +104,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

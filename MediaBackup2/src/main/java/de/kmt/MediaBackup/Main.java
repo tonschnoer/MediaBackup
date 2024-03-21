@@ -15,25 +15,24 @@ import org.apache.logging.log4j.Logger;
 
 public class Main extends GenericServlet {
 
+	// Das Überladen der Klasse GenericServlet verlangt eine Variable serialVersionUID.
 	private static final long serialVersionUID = 1L;
 	protected static final Logger logger = LogManager.getLogger();
 	
-	private static Timer timer = new Timer();
+	
 	
 	
 	// called by the Servlet Container at shutdown
 	@Override
 	public void destroy() {
 		logger.info("Finishing Application and deleting timer service.");
-		timer.cancel();	
-		timer=null;
 		logger.info("Goodbye.");
 	}
 			
 	
 	// called automatically by the Servlet Container at startup
 	public void init(ServletConfig servletConfig) throws ServletException {
-		int errorcode=0;
+		
 		super.init(servletConfig);
 		logger.info("Initializing Java MediaServBackup for dira (c) 2024 by kmt");
 		
@@ -41,20 +40,11 @@ public class Main extends GenericServlet {
 		{
 			logger.info("loading properties.");
 			Config.parseConfig();
-			
-			if (errorcode==0) {
 				
 				logger.info("Loading config successful. Initalizing timer services...");
-				//timer.schedule(new TimerElapsedAction(),Props.TimerDelay,Props.TimerInterval);
-				
 				TCPClient tc = new TCPClient();
 				tc.main(null);
-				
-			} else {
-				logger.fatal("No props available. Application halted.");
-			}
-			
-				
+		
 		} catch (Exception e) {
 			logger.fatal("Error initializing Application: "+e.getCause());
 			
@@ -62,7 +52,7 @@ public class Main extends GenericServlet {
 		
 	}
 
-	// wird nicht benoetigt, muss aber drin sein
+	// wird funktional nicht benoetigt, muss aber drin sein, da wir die Klasse GenericServlet extenden.
 	
 	@Override
 	public void service(ServletRequest arg0, ServletResponse arg1)
