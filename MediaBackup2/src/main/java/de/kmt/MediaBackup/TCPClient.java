@@ -10,9 +10,20 @@ import java.net.Socket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TCPClient.
+ */
 public class TCPClient {
+	
+	/** The logger. */
 	protected final Logger logger = LogManager.getLogger();
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public void main(String[] args) {
 		byte[] buffer = new byte[32768];
 
