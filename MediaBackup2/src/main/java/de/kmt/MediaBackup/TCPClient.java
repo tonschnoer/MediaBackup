@@ -19,7 +19,7 @@ public class TCPClient {
 		try {
 			
 			logger.info("Startup TCPClient");
-			DataOutputStream dos = new DataOutputStream(new FileOutputStream(Config.getConfigKey("file")));
+			DataOutputStream dos = new DataOutputStream(new FileOutputStream(Config.getConfigKey("directory") + Config.getConfigKey("file")));
 			Socket clientSocket = new Socket(Config.getConfigKey("server"),12345);
 			OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream());
 			InputStream is = clientSocket.getInputStream();
@@ -35,6 +35,7 @@ public class TCPClient {
 					
 					// read up to 32768 bytes from stream
 					int readbytes = is.read(buffer,0,32768);
+					System.out.print(".");
 
 					// check if 32768 bytes where read (i.e. there are some more)
 					if (readbytes<32768) {
